@@ -6,9 +6,7 @@ const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
 
-
 var favicon = require('serve-favicon');
-var path = require('path');
 
 const port = process.env.PORT || 3000;
 var app = express();
@@ -18,7 +16,7 @@ app.set('views', __dirname + '/views');
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname, 'public'));
 
 app.use((req, res, next) => {
 	var now = new Date().toString();
