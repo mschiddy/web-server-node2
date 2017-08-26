@@ -3,20 +3,18 @@
  * Module dependencies.
  */
 const express = require('express');
-const fs = require('fs');
 const hbs = require('hbs');
+const fs = require('fs');
 
-var favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 
 const port = process.env.PORT || 3000;
 var app = express();
 
 // all environments
-app.set('views', __dirname + '/views');
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
-
-app.use(express.static(__dirname, '/public'));
+app.set('views', __dirname + '/views');
 
 app.use((req, res, next) => {
 	var now = new Date().toString();
@@ -31,15 +29,11 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.use(express.static(__dirname + '/public'));
+
 hbs.registerHelper('getCurrentYear', () => {
 	return new Date().getFullYear();
 });
-
-// development only
-if ('development' == app.get('env')) {
-	console.log('Localhost');
-}
-
 
 app.get('/', (req, res) => {
 	res.render('home.hbs', {
@@ -71,7 +65,6 @@ app.get('/bad', (req, res) => {
 	});
 });
 
-//app.listen(3000);
 app.listen(port, () => {
 	console.log(`Server is up on port ${port}`);
 });
