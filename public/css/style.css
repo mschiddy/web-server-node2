@@ -7,12 +7,26 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #0000a0;
+}
+
+#description {
+	margin: auto;
+	font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#plain {
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: #808080;
 }
 
 #content {
 	background-color: white;
-	width: 80%;
-	height: 20%;
+	height: 50%;
 	opacity: .6;
 }
+
+#links{
+	display: inline;
+}
+
